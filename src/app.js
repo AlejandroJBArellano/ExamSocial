@@ -14,6 +14,8 @@ app = express();
 require("./passport/local-auth") //también ocupa middleware
 require("./database")
 
+//static files
+app.use(express.static(path.join(__dirname, "public")));
 
 // settings
 app.set("views", path.join(__dirname, "views"))
@@ -46,8 +48,7 @@ app.use(router)
 
 //errors
 
-//static files
-app.use(express.static(path.join(__dirname, "src/public")));
+
 
 //starting the server
-app.listen(app.get("port"), _=>console.log(`server on port ${app.get("port")}`))
+app.listen(app.get("port"), _=>console.log(`server on port ${app.get("port")}`));

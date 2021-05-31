@@ -10,7 +10,7 @@ isAuthenticated = (req, res, next)=>{
 router.get("/signin", (req,res,next)=>res.render("signin", {title: "Iniciar sesión"}))
 router.post("/signin", passport.authenticate("local-signin", {
     title: "Iniciar sesión",
-    successRedirect: "/",
+    successRedirect: "/feed",
     failureRedirect: "signin",
     passReqToCallback: true //recibir internamente los datos del request
 }))
@@ -26,6 +26,8 @@ router.use((req, res, next)=>{ //las rutas siguientes ocupan validación de usua
     isAuthenticated(req,res,next);
     next()
 })
+router.get("/feed", indexController.feed)
+router.get("/exam", indexController.exam)
 router.get("/exams",indexController.exams)
 router.get("/alejandro", indexController.alejandro)
 router.get("/create", indexController.create)
@@ -34,7 +36,5 @@ router.get("/logout", (req,res,next)=>{
     req.logout();
     res.redirect("/");
 })
-
-
 
 module.exports = router;

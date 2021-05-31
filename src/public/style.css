@@ -1,4 +1,44 @@
 body {
-  background-color: aqua;
+  background-color: #f8f9fa;
+}
+
+body header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body header nav section.h1 {
+  background-color: transparent;
+  height: 70px;
+  padding: 0;
+}
+
+body header nav section.h1 img {
+  height: 100%;
+}
+
+body header nav section details:focus {
+  outline: none;
+}
+
+body header nav section details summary {
+  padding: 10px 0;
+}
+
+body header nav section details summary:focus {
+  outline: none;
+}
+
+body header nav section details a, body header nav section details a:visited {
+  margin: 0 5px;
+  padding: 0 10px;
+  text-decoration: none;
+  color: black;
+  border: 1px dashed black;
+  border-radius: 10px;
 }
 /*# sourceMappingURL=style.css.map */

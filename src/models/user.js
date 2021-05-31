@@ -4,7 +4,8 @@ const mongoose = require("mongoose"), { Schema } = mongoose, bcrypt = require("b
 userSchema = new Schema({
     email: String,
     password: String, //la contraseña no se almacena en texto plano XD, pa eso se uba bcrypt
-    exams: [{ type: Schema.ObjectId, ref: "User" }]
+    exams: [{ type: Schema.ObjectId, ref: "User" }],
+    examsDone: [{ type: Schema.ObjectId, ref: "User", aciertos: Number }]
 });
 
 //definición de métodos de cifrados

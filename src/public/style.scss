@@ -1,3 +1,39 @@
 body{
-    background-color: aqua;
+    background-color: #f8f9fa;
+    header{
+        nav{
+            display: flex;
+            justify-content: space-between;
+            section.h1{
+                background-color: transparent;
+                height: 70px;
+                padding: 0;
+                img{
+                    height: 100%;
+                    // width: 100%;
+                }
+            }
+            section{
+                details{
+                    &:focus{
+                        outline: none;
+                    }
+                    summary{
+                        &:focus{
+                            outline: none;
+                        }
+                        padding: 10px 0 ;
+                    }
+                    a, a:visited{
+                        margin: 0 5px;
+                        padding: 0 10px;
+                        text-decoration: none;
+                        color: black;
+                        border: 1px dashed black;
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
+    }
 }

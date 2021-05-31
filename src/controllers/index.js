@@ -3,9 +3,14 @@ const index = (req, res) =>{
         title: "ExamSocial - Red Social de Pruebas"
     })
 },
+feed = (req,res)=>res.render("feed", {
+    title: "Lo último en ExamSocial"
+}),
+exam = (req,res)=>res.render("exam", {
+    title: "Exam de prueba"
+}),
 exams = (req,res)=>res.render(`exams`, {
     title: "ExamSocial",
-    items: items
 }),
 create = (req, res, next)=>res.render("create", {
     title: "Crea tu examen",
@@ -25,5 +30,5 @@ alejandro = (req,res)=>res.render(`alejandro`, {title: "Alejandro Full Stack Dev
 //     res.redirect("/exams")
 // };
 module.exports = {
-    index, exams, alejandro, create, profile
+    index, exams, alejandro, create, profile, exam, feed
 }

@@ -9,7 +9,7 @@ examSchema = new Schema({
         numAnswers: Number, 
         answers: [{
             answerString: String,
-            correct: boolean    
+            correct: boolean
         }]
     }]
 });
