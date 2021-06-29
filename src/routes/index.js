@@ -3,21 +3,21 @@ router = express.Router(),
 passport = require("passport"),
 indexController = require("../controllers/index"),
 isAuthenticated = (req, res, next)=>{
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated()) { //lo obtiene passport
         return next()
     } res.redirect("/signin")
 };
-router.get("/signin", (req,res,next)=>res.render("signin", {title: "Iniciar sesión"}))
+router.get("/signin", (req,res,next)=>res.render("sign/signin", {title: "Iniciar sesión"}))
 router.post("/signin", passport.authenticate("local-signin", {
     title: "Iniciar sesión",
     successRedirect: "/feed",
     failureRedirect: "signin",
     passReqToCallback: true //recibir internamente los datos del request
 }))
-router.get("/signup", (req,res,next)=>res.render("signup", {title: "regístrate"}))
+router.get("/signup", (req,res,next)=>res.render("sign/signup", {title: "regístrate"}))
 router.post("/signup", passport.authenticate("local-signup", {
     title: "Regístrate",
-    successRedirect: "/profile",
+    successRedirect: `/feed`,
     failureRedirect: "signup",
     passReqToCallback: true 
 }));
@@ -26,15 +26,17 @@ router.use((req, res, next)=>{ //las rutas siguientes ocupan validación de usua
     isAuthenticated(req,res,next);
     next()
 })
-router.get("/feed", indexController.feed)
+router.get("/", indexController.feed)
 router.get("/exam", indexController.exam)
 router.get("/exams",indexController.exams)
 router.get("/alejandro", indexController.alejandro)
 router.get("/create", indexController.create)
-router.get("/profile", indexController.profile)
+router.post("/newExam", indexController.newExam)
+router.get("/profile/:id", indexController.profile)
 router.get("/logout", (req,res,next)=>{
     req.logout();
     res.redirect("/");
+    next();
 })
 
 module.exports = router;

@@ -1,0 +1,15 @@
+<%- include("partials/head") %>
+            <% if (signinMessage) { %>
+                <div><%= signinMessage %></div>
+            <% } %>
+            <section>
+                <form action="/signin" method="POST">
+                    <fieldset>
+                        <legend>Iniciar Sesión</legend>
+                        <input type="text" name="email" id="email" placeholder="Correo Electrónico">
+                        <input type="password" name="password" id="password" placeholder="Contraseña">
+                        <button type="submit">Iniciar sesión</button>
+                    </fieldset>
+                </form>
+            </section>
+<%- include("partials/footer") %>

@@ -26,7 +26,8 @@ app.set("port", process.env.PORT || 5000)
 //middlewares
 // * para saber las peticiones que el usuario hace UwU
 app.use(morgan("dev"))
-app.use(express.urlencoded({extended: false}))
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 app.use(session({ //objeto como configuración de esta sesión
     secret: "interface-calculate", //especie de texto secreto para poerd estar seguro *nombre aleatorio
     resave: false,
@@ -47,7 +48,6 @@ app.use((req,res,next)=> {
 app.use(router)
 
 //errors
-
 
 
 //starting the server

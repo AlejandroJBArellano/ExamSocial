@@ -1,4 +1,27 @@
-<%- include("partials/head") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="examsocial.ico" type="image/x-icon">
+    <link rel="stylesheet" href="index/style.css">
+    <title><%= title %>></title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <figure>
+                <img src="" alt="">
+            </figure>
+            <nav>
+                <ul>
+                    <li>Iniciar sesión</li>
+                    <li>Registrarte</li>
+                </ul>
+            </nav>
+        </header>
+        <main>
             <section>
                 <article>
                     <section>
@@ -8,9 +31,15 @@
                         <p>Haz y resuelve exámenes de cualquier materia... ¡pon a prueba tus conocimientos!</p>
                     </section>
                     <section>
+                        <article>
+                            <a href="/signup">¡Únete!</a>
+                        </article>
+                    </section>
+                    <section>
                         <form action="/signup" method="POST">
                             <fieldset>
-                                <legend>Regìstrate para comenzar</legend>
+                                <legend>Regístrate</legend>
+                                <!-- El usuaio obtendrá la página (get), pero a la vez mandará a la base de datos su usuario -->
                                 <input type="text" name="email" id="email" placeholder="Correo Electrónico">
                                 <input type="password" name="password" id="password" placeholder="Contraseña">
                                 <button type="submit">Registrarse</button>
@@ -18,6 +47,65 @@
                         </form>
                     </section>
                 </article>
-                <article></article>
+                <article>
+                    <figure>
+                        <img src="multimedia/use-your-brain.jpg" alt="">
+                    </figure>
+                </article>
             </section>
-<%- include("partials/footer") %>
+            <section>
+                <article>
+                    <p>Aprendizaje a la medida</p>
+                    <h2>Conoce nuestro método</h2>
+                </article>
+            </section>
+            <section>
+                <article>
+                    <figure>
+                        <img src="multimedia/teacher.jpg" alt="">
+                    </figure>
+                </article>
+                <article>
+                    <p>Somos una plataforma de autoaprendizaje colaborativo en la que practicas lo que sabes resolviendo exámenes y también elaborando los tuyos para compartirlos con la comunidad.</p>
+                    <ul>
+                        <li>Encuentra exámenes ordenados por nivel y materia.</li>
+                        <li>Acumula puntos de estudiante y accede a contenido exclusivo.</li>
+                        <li>Conoce a profesionistas en todas las áreas y aprende con sus exámenes.</li>
+                    </ul>
+                </article>
+            </section>
+            <section>
+                <article>
+                    <figure></figure>
+                    <p>Estimula tu aprendizaje</p>
+                    <p>Cuando aprendes en comunidad, tienes una red de apoyo y de crecimiento continuo... ¡es más divertido!</p>
+                </article>
+                <article>
+                    <figure></figure>
+                    <p>Estudia a tu nivel y ritmo</p>
+                    <p>Encuentra exámenes de todos los niveles y materias en un mismo espacio; estudia en tus tiempos libres y en cualquier lugar en donde estés.</p>
+                </article>
+                <article>
+                    <figure></figure>
+                    <p>Mientras aprendes, ayudas</p>
+                    <p>Los exámenes digitales son también nuestra propuesta para eliminar el papel en clase, es una forma de reducir el impacto ambiental y salvar árboles.</p>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <section>
+                <figure>
+                    <img src="logo-final.png" alt="">
+                </figure>
+                <ul>
+                    <li><a href="www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="www.linkedin.com"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="github.com/AlejandroJBArellano"><i class="fab fa-github"></i></a></li>
+                </ul>
+            </section>
+        </footer>
+    </div>
+    <script src="https://kit.fontawesome.com/f6816dd194.js" crossorigin="anonymous"></script>
+</body>
+</html>
+            
