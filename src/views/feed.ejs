@@ -1,7 +1,22 @@
 <%- include("partials/head") %>
             <section>
                 <article>
-                    <p>Feed de ExamSocial... Próximamente</p>
+                    <% if (exams.length === 0) { %>
+                        <p>Feed de ExamSocial... próximamente</p>
+                    <% } else if (exams.length >= 1) { %>
+                        <h2>Feed General</h2>
+                        <% for(var i=0; i < exams.length; i++) { %>
+                            <div>Título <%= exams[i].title %> </div>
+                            <div>Autor <%= exams[i].author %></div>
+                            <div>Preguntas <%= exams[i].questions.length %></div>
+                            <br>
+                        <% } %>
+                        <% if (exams.usersDone) { %> 
+                            <h2>Más contestadas</h2>
+                            <% exams.usersDone.forEach(e => { %>
+                            <div><% exams.usersDone[e].author %></div>
+                        <% })} %>
+                    <% } %>
                 </article>
             </section>
 <%- include("partials/footer") %>

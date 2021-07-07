@@ -12,7 +12,7 @@ userSchema = new Schema({
         required: true
     }, //la contraseña no se almacena en texto plano XD, pa eso se uba bcrypt
     exams: [{ type: Schema.ObjectId, ref: "Exam" }],
-    examsDone: [{ type: Schema.ObjectId, ref: "User", aciertos: Number }]
+    examsDone: [{ type: Schema.ObjectId, ref: "Exam", aciertos: Number }]
 }, {
     timestamps: true
 });
@@ -32,4 +32,4 @@ userSchema.methods.comparePassword = function (password) {
     return bcrypt.compareSync(password, this.password)
 };
 
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model("User", userSchema);

@@ -9,7 +9,11 @@ body main {
   place-items: center;
 }
 
-body main form fieldset {
+body main section div {
+  display: none;
+}
+
+body main section form fieldset {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -29,39 +33,39 @@ body main form fieldset {
           flex-direction: column;
 }
 
-body main form fieldset > * {
+body main section form fieldset > * {
   display: inline;
   margin: 10px 20px;
 }
 
-body main form fieldset legend {
+body main section form fieldset legend {
   text-align: center;
   margin: 0;
   margin-top: 10px;
   padding: 10px;
 }
 
-body main form fieldset input {
+body main section form fieldset input {
   padding: 5px 10px;
   border: 0;
   border-bottom: 1px solid black;
 }
 
-body main form fieldset input:focus-visible {
+body main section form fieldset input:focus-visible {
   outline: 0;
 }
 
-body main form fieldset input:-internal-autofill-selected {
+body main section form fieldset input:-internal-autofill-selected {
   background-color: transparent !important;
   color: black !important;
 }
 
-body main form fieldset button {
+body main section form fieldset button {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
-body main form fieldset button:hover {
+body main section form fieldset button:hover {
   border-radius: 10px;
   background: linear-gradient(145deg, #f0f0f0, #cacaca);
   -webkit-box-shadow: 5px 5px 0px #c3c3c3, -5px -5px 0px #fdfdfd;

@@ -23,12 +23,16 @@ examSchema = new Schema({
     author: { 
         type: Schema.ObjectId, 
         ref: "User",
-        unique: true,
         required: `The author is required.`
     },
-    questions: [questionsSchema]
+    questions: [questionsSchema],
+    usersDone: [{
+        type: Schema.ObjectId, 
+        ref: "User",
+        unique: true,
+    }]
 }, {
     timestamps: true,
 });
 
-module.exports = mongoose.model("exams", examSchema);
+module.exports = mongoose.model("Exam", examSchema);

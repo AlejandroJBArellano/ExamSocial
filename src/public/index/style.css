@@ -1,1 +1,114 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body .container header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .container header figure img {
+  height: 10vh;
+}
+
+body .container header nav ul {
+  list-style: none;
+}
+
+body .container header nav ul li {
+  display: inline-block;
+}
+
+body .container main > section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+body .container main > section article figure {
+  margin: 10px;
+}
+
+body .container main > section article figure img {
+  width: 100%;
+}
+
+body .container main > section:first-child article section h1 {
+  font-size: 45px;
+}
+
+body .container main > section:first-child article section p {
+  font-size: 25px;
+}
+
+body .container main > section:first-child article section form {
+  margin: 0 auto;
+  width: 50%;
+}
+
+body .container main > section:first-child article section form fieldset legend {
+  text-align: center;
+}
+
+body .container main > section:first-child article section form fieldset legend input {
+  display: inline-block;
+}
+
+body .container main > section:nth-child(2) {
+  display: block;
+  text-align: center;
+}
+
+body .container main > section:nth-child(2) article p {
+  font-size: 24px;
+  line-height: 31px;
+  margin: 0;
+}
+
+body .container main > section:nth-child(2) article h2 {
+  font-size: 70px;
+  line-height: 100%;
+  font-weight: 800;
+  margin: 0;
+}
+
+body .container main > section:last-child {
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+body .container main > section:last-child article {
+  margin: 0 30px;
+  border: 1px solid rgba(0, 0, 0, 0.555);
+  border-radius: 10px;
+}
+
+body .container main > section:last-child article figure {
+  margin: 0;
+}
+
+body .container main > section:last-child article figure img {
+  width: 100%;
+  height: 285px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+body .container main > section:last-child article p {
+  margin: 20px;
+}
+
+body .container main > section:last-child article p:first-child {
+  font-size: 30px;
+}
+
+body .container main > section:last-child article p:last-child {
+  font-size: 20px;
+}
+/*# sourceMappingURL=style.css.map */

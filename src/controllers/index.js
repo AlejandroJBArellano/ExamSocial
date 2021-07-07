@@ -4,57 +4,90 @@ const passport = require("passport"),
 User = require("../models/user")
 Exam = require("../models/exams");
 
-const index = (req, res) =>{
-    console.log(req.user)
+const all = (req, res) => {
+    if(req.user) {return res.redirect("/feed")}
+},
+index = (req, res) => {
+    if(req.user) {return res.redirect("/feed")}
     res.render("index", {
         title: "ExamSocial - Red Social de Pruebas"
     })
 },
-feed = async (req,res)=>{
-    try{
-        const user = await User.findById(req.user);
-        return res.render("feed", {
+feed = async (req,res) => {
+    const user = await User.findById(req.user);
+    const exams = await Exam.find()
+    return res.render("feed", {
         title: "Lo último en ExamSocial",
-        email: user.email
-        })
-    } catch (e) {
-        return res.status(400).json({
-            code: e.code,
-            message: e.message
-        })
-    }
+        exams: exams,
+        id: user._id
+    })
 },
-exam = (req,res)=>res.render("exam", {
-    title: "Exam de prueba"
-}),
-exams = (req,res)=>res.render(`exams`, {
-    title: "ExamSocial",
-}),
-create = (req, res)=>{
+exam = async (req,res)=>{
+    const user = await User.findById(req.user);
+    res.render("exam/exam", {
+        title: "Exam de prueba",
+        id: user._id
+    })
+},
+exams = async (req,res)=>{
+    const exam = await Exam.findById(req.params.id)
+    const user = await User.findById(req.user) 
+    res.render(`exams`, {
+        exam: exam, //preguntar si es lo mismo exam: exam y me salto todo lo demás
+        title: exam.title,
+        author: exam.author,
+        questions: exam.questions,
+        usersDone: exam.usersDone
+    })
+},
+create = async (req, res)=>{
+    const user = await User.findById(req.user)
     res.render("create/createQyA", {
         title: "Crea tu examen",
+        user: user
     })
 },
 profile = async (req, res) =>{
-    user = await User.findById(req.user)
+    const user = await User.findById(req.user)
     res.render("profile", {
-    title: "tu perfil de ExamSocial",
-    user: user,
-    // email: user.email.type,
-    // createdAt: user.createdAt
+        title: "Tu perfil de ExamSocial",
+        email: user.email,
+        createdAt: user.createdAt,
+        id: user._id
     })
 },
 newExam = async (req, res)=>{
-    //lo que puedo hacer es seprar diferentes tablas dependiendo de los exámenes
+    const user = await User.findById(req.user)
     console.log(req.body);
-    const newExam = new Exam(req.body);
-    newExam.author = User
+    const newExam = new Exam(req.body)
     await newExam.save();
     res.redirect("/")
 },
+deleteExam = async (req, res) => {
+    const user = await User.findById(req.user)
+    const { idExam } = req.params;
+    await Task.remove({_id: idExam})
+},
+completeExam = async (req, res) => {
+    const user = await User.findById(req.user)
+    const { id } = req.params;
+    const examCompleted = Exam.findById(id);
+    user.examsDone.push(examCompleted._id)
+    examCompleted.usersDone.push(user._id)
+},
 alejandro = (req,res)=>{
-    res.render(`alejandro`, {title: "Alejandro Full Stack Developer"})
+    res.render(`author/alejandro`)
 };
 module.exports = {
-    index, exams, alejandro, create, profile, exam, feed, newExam
+    all, 
+    index, 
+    exams, 
+    alejandro, 
+    create, 
+    profile, 
+    exam, 
+    feed, 
+    newExam, 
+    deleteExam, 
+    completeExam
 }

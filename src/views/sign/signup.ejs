@@ -1,8 +1,8 @@
 <%- include("partials/head") %>
-            <% if (signupMessage) { %>
-                <div><%= signupMessage %></div>
-            <% } %>
             <section>
+                <% if (signupMessage) { %>
+                    <div><%= signupMessage %></div>
+                <% } %>
                 <form action="/signup" method="POST">
                     <fieldset>
                         <legend>Regístrate</legend>

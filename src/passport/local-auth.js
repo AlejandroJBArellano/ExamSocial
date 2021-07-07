@@ -17,7 +17,7 @@ passport.use("local-signup", new LocalStrategy({
 }, async (req, email, password, done) => { //el done es la respuesta finalizada para el cliente
     
     const validateUser = await User.findOne({email: email})    //validacion de la existencia del usuario
-    if (validateUser) {return done(null, false, req.flash("signupMessage", "El email ya ha sido tomado"))} //para buscar correos existentes
+    if (validateUser) {return done(null, false, req.flash("signupMessage", "Este Usuario ya ha sido registrado"))} //para buscar correos existentes
     else{
         const newUser = new User(); // el ususario es blanco; sin datos, por eso se especifica los datos nuevos
         newUser.email = email;
@@ -34,7 +34,7 @@ passport.use("local-signin", new LocalStrategy({
 }, async (req, email, password, done) => { //el done es la respuesta finalizada para el cliente
 
     const user = await User.findOne({email: email})
-    if(!user){return done(null, false, req.flash("signinMessage", "Usuario no encontrado"))}
-    if(!user.comparePassword(password)){return done(null, false, req.flash("signinMessage", "La contraseña no concide"))}
+    if(!user){return done(null, false, req.flash("signinMessage", "El email y la contraseña no coinciden"))}
+    if(!user.comparePassword(password)){return done(null, false, req.flash("signinMessage", "El email y la contraseña no coinciden"))}
     done(null, user)
 }));

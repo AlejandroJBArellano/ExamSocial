@@ -1,30 +1,36 @@
 <%- include("partials/head") %>
-            <form action="/newExam" method="POST"> -->
+            <form action="/newExam" method="POST"> 
                 <!-- editar preguntas, mostrar aleatorias las preguntas al momento de exams.id -->
                 <!-- si se edita, guardar versiones del examen -->
                 <!-- form control -->
                 <!-- cuando ya se vaya mandar, estudiar fildset y tranformar en objetos anidados cn la estructura de mi examSvhema: serialización -->
-                <fieldset>
+
+                <fieldset id="testComplete">
                     <legend>Crea tu propio examen</legend>
-                    <input type="text" name="question" id="question" placeholder="Pregunta"><br>
-                    <fieldset>
-                        <input type="text" name="answerString" id="" placeholder="Respuesta">
-                        <input type="checkbox" name="correct" id="" checked><label for="">Respuesta correcta</label><br>
+                    <input type="text" name="title" id="title" placeholder="title">
+                    <fieldset id="questionFieldset" class="questionFieldset">
+                        <!-- quiero poner el número de pregunta pero no sé cómo, tomando en cuenta el classlist -->
+                        <legend>Pregunta</legend>
+                        <input type="text" name="question" placeholder="Pregunta"><br>
+                        <fieldset>
+                            <input type="text" name="answerString" id="" placeholder="Respuesta">
+                            <input type="checkbox" name="correct" id="" checked><label for="">Respuesta correcta</label><br>
+                        </fieldset>
+                        <fieldset>
+                            <input type="text" name="answerString" id="" placeholder="Respuesta">
+                            <input type="checkbox" name="correct" id="" checked><label for="">Respuesta correcta</label><br>
+                        </fieldset>
+                        <fieldset>
+                            <input type="text" name="answerString" id="" placeholder="Respuesta">
+                            <input type="checkbox" name="correct" id="" checked><label for="">Respuesta correcta</label><br>
+                        </fieldset>
+                        <fieldset>
+                            <input type="text" name="answerString" id="" placeholder="Respuesta">
+                            <input type="checkbox" name="correct" id="" checked><label for="">Respuesta correcta</label><br>
+                        </fieldset>
                     </fieldset>
-                    <fieldset>
-                        <input type="text" name="answerString" id="" placeholder="Respuesta">
-                        <input type="checkbox" name="correct" id="" checked><label for="">Respuesta correcta</label><br>
-                    </fieldset>
-                    <fieldset>
-                        <input type="text" name="answerString" id="" placeholder="Respuesta">
-                        <input type="checkbox" name="correct" id="" checked><label for="">Respuesta correcta</label><br>
-                    </fieldset>
-                    <fieldset>
-                        <input type="text" name="answerString" id="" placeholder="Respuesta">
-                        <input type="checkbox" name="correct" id="" checked><label for="">Respuesta correcta</label><br>
-                    </fieldset>
+                    <button id="btnForNewQuestion">Otra pregunta</button>
                 </fieldset>
-                <button>Otra pregunta</button>
                 <button>Crear test</button>
             </form>
 <%- include("partials/footer") %>
