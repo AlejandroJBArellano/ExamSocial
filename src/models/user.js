@@ -7,6 +7,10 @@ userSchema = new Schema({
         required: true, 
         unique: true
     },
+    username: {
+        type: String,
+        unique: true
+    },
     password: {
         type: String,
         required: true

@@ -1,4 +1,4 @@
-const passport = require("passport"), LocalStrategy = require("passport-local").Strategy, User = require("../models/user");
+const passport = require("passport"), LocalStrategy = require("passport-local").Strategy, User = require("../models/user"), validator = require("validator");
 
 //serializar al usuario; no pedirle que inicie sesión cada vez que pida algo a nuestra aplicación
 passport.serializeUser((user, done)=>{
@@ -15,16 +15,17 @@ passport.use("local-signup", new LocalStrategy({
     passwordField: "password",
     passReqToCallback: true // recibe también los datos request
 }, async (req, email, password, done) => { //el done es la respuesta finalizada para el cliente
-    
-    const validateUser = await User.findOne({email: email})    //validacion de la existencia del usuario
-    if (validateUser) {return done(null, false, req.flash("signupMessage", "Este Usuario ya ha sido registrado"))} //para buscar correos existentes
-    else{
-        const newUser = new User(); // el ususario es blanco; sin datos, por eso se especifica los datos nuevos
-        newUser.email = email;
-        newUser.password = newUser.encryptPassword(password); //toma como parámetro la contraseña, la cifra y al momento de retornarla se le asigna
-        await newUser.save(); // método asíncrono; await debe de tener async en su función padre
-        done(null, newUser); //termina el proceso de registro; 1er parámetro es igual a error, donde se pone null porque se desconoce; el 2do es éxito, un usuario registrado
-    }
+    if(validator.isEmail(email) && validator.isLength(password, {min: 5, max: 25})){
+        const validateUser = await User.findOne({email: email})    //validacion de la existencia del usuario
+        if (validateUser) {return done(null, false, req.flash("signupMessage", "Este Usuario ya ha sido registrado"))} //para buscar correos existentes
+        else{
+            const newUser = new User(); // el ususario es blanco; sin datos, por eso se especifica los datos nuevos
+            newUser.email = email;
+            newUser.password = newUser.encryptPassword(password); //toma como parámetro la contraseña, la cifra y al momento de retornarla se le asigna
+            await newUser.save(); // método asíncrono; await debe de tener async en su función padre
+            done(null, newUser); //termina el proceso de registro; 1er parámetro es igual a error, donde se pone null porque se desconoce; el 2do es éxito, un usuario registrado
+        }
+    } {return done(null, false, req.flash("signupMessage", "Campos inválidos; la contraseña debe tener mínimo 5 carácteres"))}
 }));
 
 passport.use("local-signin", new LocalStrategy({

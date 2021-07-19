@@ -1,10 +1,8 @@
 const mongoose = require("mongoose"), { Schema } = mongoose,
 
 answersSchema = new Schema({
-    answer: {
-        answer: String,
-        correct: Boolean
-    },
+    answer: String,
+    correct: Boolean
 }),
 
 questionsSchema = new Schema({
@@ -29,7 +27,6 @@ examSchema = new Schema({
     usersDone: [{
         type: Schema.ObjectId, 
         ref: "User",
-        unique: true,
     }]
 }, {
     timestamps: true,

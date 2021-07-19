@@ -2,12 +2,12 @@ const express = require("express"),
 router = express.Router(),
 passport = require("passport"),
 indexController = require("../controllers/index"),
-isAuthenticated = (req, res, next)=>{
-    if (req.isAuthenticated()) { //lo obtiene passport
-        return next();
-    } res.redirect("/signin");
-};
-router.get("/alejandro", indexController.alejandro)
+// isAuthenticated = (req, res, next)=>{
+//     if (req.isAuthenticated()) { //lo obtiene passport
+//         return next();
+//     } res.redirect("/signin");
+// };
+isAuthenticated = require("../controllers/isAuthenticated");
 router.get("/signin", (req,res,next)=>{
     if(req.user) {return res.redirect("/feed")}
     res.render("sign/signin", {title: "Iniciar sesión"})
@@ -29,6 +29,7 @@ router.post("/signup", passport.authenticate("local-signup", {
     passReqToCallback: true 
 }));
 router.get("/", indexController.index)
+router.get("/alejandro", indexController.alejandro)
 router.get("/feed", isAuthenticated, indexController.feed)
 router.get("/exam", isAuthenticated, indexController.exam)
 router.get("/exams/:id", isAuthenticated, indexController.exams)
@@ -40,6 +41,8 @@ router.get("/logout", isAuthenticated, (req,res,next)=>{
     res.redirect("/");
     next();
 })
+router.get("/createUsername", isAuthenticated, indexController.getViewUsername)
+router.post("/createUsername", isAuthenticated, indexController.createUsername)
 router.get("*", isAuthenticated, indexController.all)
 
 module.exports = router;

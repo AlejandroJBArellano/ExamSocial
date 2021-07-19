@@ -1,1 +1,8 @@
-    <script src="create-exam/app.js"></script>
+    <script src="/create-exam/app.js"></script>
+    <script src="/create-exam/create.js"></script>
+    <script src="/create-exam/delete.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/deepforms@1.0.0/deepforms.min.js"></script>
+    <script>
+        const send = document.getElementById("send"), form = document.getElementById("form");
+        send.addEventListener("click", _ => deepforms.submitDeepForm("form"))
+    </script>
