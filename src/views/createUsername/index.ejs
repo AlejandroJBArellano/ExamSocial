@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/multimedia/exam-social.ico" type="image/x-icon">
-    <title>Crea tu nombre de usuario, por favor</title>
+    <link rel="shortcut icon" href="/multimedia/examsocial.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/edit/personalization.css">
+    <title>Añade más datos antes, por favor</title>
 </head>
 <body>
-    <form action="/createUsername" method="POST">
-        <input type="text" name="username" id="">
-        <button>Crear nombre de Usuario</button>
-    </form>
+    <div class="container">
+        <form action="/createUsername" method="POST" autocomplete="off">
+            <fieldset>
+                <legend>Create a Username and choose a profile pic</legend>
+                <div class="username">
+                    <label for="username">Inserte su Nombre de Usuario</label>
+                    <input type="text" name="username">
+                </div>
+                <div class="choose">
+                    <label for="picture">Escoge una foto de perfil</label>
+                    <section>
+                        <label>
+                            <input type="radio" name="picture" value="picOne" checked>
+                            <img src="/multimedia/picture/picOne.png" alt="">
+                        </label>
+                        <label>
+                            <input type="radio" name="picture" value="picTwo">
+                            <img src="/multimedia/picture/picTwo.png" alt="">
+                        </label>
+                    </section>
+                </div>
+                <button>Actualizar perfil</button>
+            </fieldset>
+        </form>
+    </div>
 </body>
 </html>

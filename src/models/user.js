@@ -11,10 +11,8 @@ userSchema = new Schema({
         type: String,
         unique: true
     },
-    password: {
-        type: String,
-        required: true
-    }, //la contraseña no se almacena en texto plano XD, pa eso se uba bcrypt
+    picture: String,
+    password: String, //la contraseña no se almacena en texto plano XD, pa eso se uba bcrypt
     exams: [{ type: Schema.ObjectId, ref: "Exam" }],
     examsDone: [{ type: Schema.ObjectId, ref: "Exam", aciertos: Number }]
 }, {

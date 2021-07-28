@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express"),
 path = require("path"),
 router = require("./routes/index.js"),
@@ -12,6 +13,7 @@ session = require("express-session"),
 //initializations
 app = express();
 require("./passport/local-auth") //también ocupa middleware
+require("./passport/google")
 require("./database")
 
 //static files

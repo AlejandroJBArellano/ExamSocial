@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url("https://necolas.github.io/normalize.css/latest/normalize.css");
+body{
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    user-select: none;
+    .container{
+        display: grid;
+        height: 100%;
+        place-items: center;
+        form{
+            display: flex;
+            text-align: center;
+            fieldset{
+                color: rgb(0, 216, 245);
+                border:2px solid rgb(0, 216, 245);
+                legend{
+                    padding: 5px;
+                }
+                .username{
+                    label{
+                        text-align: center;
+                        display: block;
+                        margin: 10px;
+                    }
+                    input{
+                        border: 2px solid rgb(0, 216, 245);
+                        border-radius: 5px;
+                    }
+                    input:focus{
+                        background-color: rgba(0, 216, 245, 0.103);
+                    }
+                    input:focus-visible{
+                        outline: none;
+                    }
+                }
+                .choose{
+                    & > label{
+                        text-align: center;
+                        display: block;
+                        margin: 10px;
+                    }
+                    section{
+                        display: flex;
+                        justify-content: center;
+                        label{
+                            input[type="radio"]{
+                                position: absolute;
+                                opacity: 0;
+                                width: 0;
+                                height: 0;
+                                background-color: rgba(0, 216, 245, 0.103);
+
+                            }
+                            input[type=radio] + img {
+                                border: 5px solid transparent;
+                                margin: 5px;
+                                cursor: pointer;
+                                border-radius: 50%;
+                            }
+                            input[type=radio]:checked + img {
+                                border: 5px solid rgb(0, 216, 245);
+                            }
+                        }
+                    }
+                }
+                button{
+                    transition: .5s all;
+                    font-weight: 800;
+                    margin: 10px;
+                    border: 2px solid transparent;
+                    border-radius: 5px;
+                    padding: 10px;
+                    background-color: rgb(0, 216, 245);
+                    cursor: pointer;
+                    &:hover{
+                        transform: scale(1.118);
+                    }
+                }
+            }
+        }
+    }
+}

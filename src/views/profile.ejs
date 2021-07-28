@@ -2,6 +2,7 @@
             <% if(user._id.toString() === userToFind._id.toString()) {%>
             <section>
                 <h2>¡Bienvenido de nuevo, <%= user.username %>!</h2>
+                <img src="/multimedia/picture/<%= user.picture %>.png" alt="">
                 <h3>Te uniste el <%= createdAt.getDate() %>/<%= createdAt.getMonth()+1 %>/<%= createdAt.getFullYear() %></h3>
             </section>
             <% } else { %>

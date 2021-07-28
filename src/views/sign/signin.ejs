@@ -1,15 +1,18 @@
 <%- include("partials/head") %>
-            <% if (signinMessage) { %>
-                <div><%= signinMessage %></div>
-            <% } %>
             <section>
-                <form action="/signin" method="POST">
+                <form action="/signin" method="POST" autocomplete="off">
                     <fieldset>
+                    <% if (signinMessage) { %>
+                        <div><%= signinMessage %></div>
+                    <% } %>
                         <legend>Iniciar Sesión</legend>
-                        <input type="text" name="email" id="email" placeholder="Correo Electrónico">
-                        <input type="password" name="password" id="password" placeholder="Contraseña">
+                        <input autocomplete="false" type="text" name="email" id="email" placeholder="Correo Electrónico">
+                        <input autocomplete="false" type="password" name="password" id="password" placeholder="Contraseña">
                         <button type="submit">Iniciar sesión</button>
                     </fieldset>
                 </form>
+            </section>
+            <section>
+                <a href="/google" class="boton">Inicia sesión con google</a>
             </section>
 <%- include("partials/footer") %>

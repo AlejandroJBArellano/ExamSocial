@@ -1,49 +1,68 @@
-<%- include("partials/head") %>
-            <form id="form" action="/newExam" method="POST"> 
-                <!-- editar preguntas, mostrar aleatorias las preguntas al momento de exams.id -->
-                <!-- si se edita, guardar versiones del examen -->
-                <!-- cuando ya se vaya mandar, estudiar fildset y tranformar en objetos anidados cn la estructura de mi examSvhema: serialización -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/multimedia/exam-social.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/create-exam/style/style.css">
+    <title>Crear tu examen en ExamSocial - ExamSocial</title>
+</head>
+<body>
+    <form id="form" action="/newExam" method="POST"> 
+        <!-- editar preguntas, mostrar aleatorias las preguntas al momento de exams.id -->
+        <!-- si se edita, guardar versiones del examen -->
+        <!-- cuando ya se vaya mandar, estudiar fildset y tranformar en objetos anidados cn la estructura de mi examSvhema: serialización -->
 
-                <fieldset id="testComplete">
-                    <legend>Crea tu propio examen</legend>
-                    <input type="text" name="title" id="title" placeholder="Título">
-                    <fieldset id="questionFieldset" class="questionFieldset">
-                        <legend>Pregunta</legend>
-                        <input type="text" name="questions.question" placeholder="Pregunta">
-                        <fieldset class="answerFieldset">
-                            <textarea name="questions.answers.answer" id="" placeholder="Respuesta"></textarea>
-                            <section>
-                                <input type="checkbox" name="questions.answers.correct">
-                                <label for="questions.answers.correct">Respuesta correcta</label>
-                            </section>
-                        </fieldset>
-                        <fieldset class="answerFieldset">
-                            <textarea name="questions.answers.answer" id="" placeholder="Respuesta"></textarea>
-                            <section>
-                                <input type="checkbox" name="questions.answers.correct">
-                                <label for="questions.answers.correct">Respuesta correcta</label>
-                            </section>
-                        </fieldset>
-                        <fieldset class="answerFieldset">
-                            <textarea name="questions.answers.answer" id="" placeholder="Respuesta"></textarea>
-                            <section>
-                                <input type="checkbox" name="questions.answers.correct">
-                                <label for="questions.answers.correct">Respuesta correcta</label>
-                            </section>
-                        </fieldset>
-                        <fieldset class="answerFieldset">
-                            <textarea name="questions.answers.answer" id="" placeholder="Respuesta"></textarea>
-                            <section>
-                                <input type="checkbox" name="questions.answers.correct">
-                                <label for="questions.answers.correct">Respuesta correcta</label>
-                            </section>
-                        </fieldset>
-                    </fieldset>
-                    <section id="sectionButtons">
-                        <button id="btnForNewQuestion">Otra pregunta</button>
-                        <button id="deleteQuestion">Eliminar Pregunta</button>
+        <fieldset id="testComplete">
+            <legend>Crea tu propio examen</legend>
+            <input type="text" name="title" id="title" placeholder="Título">
+            <fieldset id="questionFieldset" class="questionFieldset">
+                <legend>Pregunta</legend>
+                <input type="text" name="questions.question" placeholder="Pregunta">
+                <fieldset class="answerFieldset">
+                    <textarea name="questions.answers.answer" id="" placeholder="Respuesta"></textarea>
+                    <section>
+                        <input type="checkbox" name="questions.answers.correct">
+                        <label for="questions.answers.correct">Respuesta correcta</label>
                     </section>
                 </fieldset>
-            </form>
-            <button id="send">Crear Test</button>
-<%- include("partials/footer") %>
+                <fieldset class="answerFieldset">
+                    <textarea name="questions.answers.answer" id="" placeholder="Respuesta"></textarea>
+                    <section>
+                        <input type="checkbox" name="questions.answers.correct">
+                        <label for="questions.answers.correct">Respuesta correcta</label>
+                    </section>
+                </fieldset>
+                <fieldset class="answerFieldset">
+                    <textarea name="questions.answers.answer" id="" placeholder="Respuesta"></textarea>
+                    <section>
+                        <input type="checkbox" name="questions.answers.correct">
+                        <label for="questions.answers.correct">Respuesta correcta</label>
+                    </section>
+                </fieldset>
+                <fieldset class="answerFieldset">
+                    <textarea name="questions.answers.answer" id="" placeholder="Respuesta"></textarea>
+                    <section>
+                        <input type="checkbox" name="questions.answers.correct">
+                        <label for="questions.answers.correct">Respuesta correcta</label>
+                    </section>
+                </fieldset>
+            </fieldset>
+            <section id="sectionButtons">
+                <button id="btnForNewQuestion">Otra pregunta</button>
+                <button id="deleteQuestion">Eliminar Pregunta</button>
+            </section>
+        </fieldset>
+    </form>
+    <button id="send">Crear Test</button>
+    <script src="/create-exam/app.js"></script>
+    <script src="/create-exam/create.js"></script>
+    <script src="/create-exam/delete.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/deepforms@1.0.0/deepforms.min.js"></script>
+    <script>
+        const send = document.getElementById("send"), form = document.getElementById("form");
+        send.addEventListener("click", _ => deepforms.submitDeepForm("form"))
+    </script>
+</body>
+</html>

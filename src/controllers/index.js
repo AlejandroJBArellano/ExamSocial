@@ -1,18 +1,20 @@
 const passport = require("passport"),
-User = require("../models/user")
+User = require("../models/user"),
 Exam = require("../models/exams"),
+validator = require("validator"),
 hasItUsername = async (req, res) => {
     if(req.user) {
         const user = await User.findById(req.user)
-        if(!user.username){
-            return res.redirect("/createUsername")
-        } return res.redirect("/feed")
+        if(!user.username || !user.picture){
+            res.redirect("/createUsername")
+        } res.redirect("/feed")
     }
 }, hasItUsernameTwo = async (req, res) => {
+    console.log(req.user)
     if(req.user) {
         const user = await User.findById(req.user)
-        if(!user.username){
-            return res.redirect("/createUsername")
+        if(!user.username || !user.picture){
+            res.redirect("/createUsername")
         }
     }
 };
@@ -21,13 +23,18 @@ const all = (req, res) => {
     hasItUsername(req,res)
 },
 getViewUsername = (req, res) => {
+    hasItUsernameTwo(req, res)
     res.render("createUsername/index")
 },
 createUsername = async (req, res) => {
+    console.log(req.body)
     const user = await User.findById(req.user)
-    user.username = req.body.username;
-    await user.save()
-    res.redirect("/")
+    if(validator.isLength(req.body.username, {min: 5, max: 25}) && req.body.picture === "picTwo" || req.body.picture === "picOne"){
+        user.username = req.body.username;
+        user.picture = `/multimedia/picture/${req.body.picture}.png`;
+        await user.save()
+        res.redirect("/")
+    } {req.flash("userLength"), "Tu puede tener un máximo de 25 carácteres y un mínimo de 5"}
 },
 index = (req, res) => {
     if(req.user) {
@@ -43,7 +50,7 @@ feed = async (req,res) => {
     const user = await User.findById(req.user);
     const exams = await Exam.find()
     const users = await User.find(exams.author)
-    return res.render("feed", {
+    res.render("feed", {
         title: "Lo último en ExamSocial",
         exams: exams,
         authors: users,

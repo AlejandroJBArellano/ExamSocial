@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+@import url("https://necolas.github.io/normalize.css/latest/normalize.css");
+body {
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+body .container {
+  display: -ms-grid;
+  display: grid;
+  height: 100%;
+  place-items: center;
+}
+
+body .container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+}
+
+body .container form fieldset {
+  color: #00d8f5;
+  border: 2px solid #00d8f5;
+}
+
+body .container form fieldset legend {
+  padding: 5px;
+}
+
+body .container form fieldset .username label {
+  text-align: center;
+  display: block;
+  margin: 10px;
+}
+
+body .container form fieldset .username input {
+  border: 2px solid #00d8f5;
+  border-radius: 5px;
+}
+
+body .container form fieldset .username input:focus {
+  background-color: rgba(0, 216, 245, 0.103);
+}
+
+body .container form fieldset .username input:focus-visible {
+  outline: none;
+}
+
+body .container form fieldset .choose > label {
+  text-align: center;
+  display: block;
+  margin: 10px;
+}
+
+body .container form fieldset .choose section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .container form fieldset .choose section label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  background-color: rgba(0, 216, 245, 0.103);
+}
+
+body .container form fieldset .choose section label input[type=radio] + img {
+  border: 5px solid transparent;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+body .container form fieldset .choose section label input[type=radio]:checked + img {
+  border: 5px solid #00d8f5;
+}
+
+body .container form fieldset button {
+  -webkit-transition: .5s all;
+  transition: .5s all;
+  font-weight: 800;
+  margin: 10px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #00d8f5;
+  cursor: pointer;
+}
+
+body .container form fieldset button:hover {
+  -webkit-transform: scale(1.118);
+          transform: scale(1.118);
+}
+/*# sourceMappingURL=personalization.css.map */
