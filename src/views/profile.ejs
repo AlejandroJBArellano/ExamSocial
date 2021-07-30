@@ -1,0 +1,20 @@
+<%- include("partials/head") %>
+            <% if(user._id.toString() === userToFind._id.toString()) {%>
+            <section>
+                <h2>¡Bienvenido de nuevo, <%= user.username %>!</h2>
+                <h3>Te uniste el <%= createdAt.getDate() %>/<%= createdAt.getMonth()+1 %>/<%= createdAt.getFullYear() %></h3>
+            </section>
+            <% } else { %>
+            <section>
+                <h2> <%= userToFind.username %></h2>
+            </section>
+            <% } %>
+            <section>
+                <p>Exámenes creados</p>
+                <% userToFind.exams.forEach(e => { %>
+                    <article>
+                        <p><%= e.questions.length %></p>
+                    </article>
+                <% }) %>
+            </article>
+<%- include("partials/footer") %>

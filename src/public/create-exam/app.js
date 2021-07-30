@@ -1,0 +1,2 @@
+const testComplete = document.getElementById("testComplete"), questionFieldset = document.getElementById("questionFieldset"), btnForNewQuestion = document.getElementById("btnForNewQuestion"), sectionButtons = document.getElementById("sectionButtons"), deleteQuestion = document.getElementById("deleteQuestion"), questionFieldsetArray = document.querySelectorAll(".questionFieldset");
+deleteQuestion.style.display = "none";

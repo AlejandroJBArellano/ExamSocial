@@ -1,0 +1,154 @@
+const passport = require("passport"),
+User = require("../models/user")
+Exam = require("../models/exams"),
+hasItUsername = async (req, res) => {
+    if(req.user) {
+        const user = await User.findById(req.user)
+        if(!user.username){
+            return res.redirect("/createUsername")
+        } return res.redirect("/feed")
+    }
+}, hasItUsernameTwo = async (req, res) => {
+    if(req.user) {
+        const user = await User.findById(req.user)
+        if(!user.username){
+            return res.redirect("/createUsername")
+        }
+    }
+};
+
+const all = (req, res) => {
+    hasItUsername(req,res)
+},
+getViewUsername = (req, res) => {
+    res.render("createUsername/index")
+},
+createUsername = async (req, res) => {
+    const user = await User.findById(req.user)
+    user.username = req.body.username;
+    await user.save()
+    res.redirect("/")
+},
+index = (req, res) => {
+    if(req.user) {
+        return res.redirect("/feed")
+    } {
+        return res.render("index", {
+            title: "ExamSocial - Red Social de Pruebas"
+        })
+    }
+},
+feed = async (req,res) => {
+    hasItUsernameTwo(req,res)
+    const user = await User.findById(req.user);
+    const exams = await Exam.find()
+    const users = await User.find(exams.author)
+    return res.render("feed", {
+        title: "Lo último en ExamSocial",
+        exams: exams,
+        authors: users,
+        id: user._id
+    })
+},
+exam = async (req,res)=>{
+    hasItUsernameTwo(req,res)
+    const user = await User.findById(req.user);
+    res.render("exam/exam", {
+        title: "Exam de prueba",
+        id: user._id
+    })
+},
+exams = async (req,res)=>{
+    hasItUsernameTwo(req,res)
+    const exam = await Exam.findById(req.params.id)
+    const author = await User.findById(exam.author)
+    const user = await User.findById(req.user) 
+    res.render(`exams/exams`, {
+        id: user._id,
+        exam: exam, //preguntar si es lo mismo exam: exam y me salto todo lo demás
+        title: exam.title,
+        author: author.email,
+        createdAt: exam.createdAt,
+        questions: exam.questions,
+        usersDone: exam.usersDone
+    })
+},
+create = async (req, res)=>{
+    hasItUsernameTwo(req,res)
+    const user = await User.findById(req.user)
+    res.render("create/createQyA", {
+        title: "Crea tu examen",
+        user: user
+    })
+},
+profile = async (req, res) =>{
+    hasItUsernameTwo(req,res)
+    const user = await User.findById(req.user), userToFind = await User.findById(req.params.id);
+    res.render("profile", {
+        title: "Tu perfil de ExamSocial",
+        userToFind: userToFind,
+        user: user,
+        email: user.email,
+        createdAt: user.createdAt,
+        id: user._id
+    })
+},
+newExam = async (req, res)=>{
+    hasItUsernameTwo(req,res)
+    const user = await User.findById(req.user),
+    examData = JSON.parse(req.body.deepFormJSON),
+    newExam = new Exam(examData);
+    console.log(examData);
+    newExam.title = examData.title
+    newExam.author = user._id
+    newExam.questions = []
+    examData.questions.question.forEach(e => {
+        newExam.questions.push({
+            question: e,
+        })
+    })
+    examData.questions.answers.answer.forEach(e => {
+
+    })
+    for(var i = 0; i < examData.questions.answers.answer.length; i++){
+        examData.questions.answers.answer[i] = newExam.questions.answers.answer[i]
+    }
+    examData.questions.answers.correct.forEach(e => {
+
+    })
+    await newExam.save();
+    user.exams.push(newExam._id)
+    res.redirect("/")
+},
+deleteExam = async (req, res) => {
+    hasItUsernameTwo(req,res)
+    const user = await User.findById(req.user)
+    const { idExam } = req.params;
+    await Exam.remove({_id: idExam})
+},
+completeExam = async (req, res) => {
+    hasItUsernameTwo(req,res)
+    const user = await User.findById(req.user)
+    const { id } = req.params;
+    const examCompleted = Exam.findById(id);
+    user.examsDone.push(examCompleted._id)
+    examCompleted.usersDone.push(user._id)
+},
+alejandro = (req,res)=>{
+    res.render(`author/alejandro`)
+};
+module.exports = {
+    all, 
+    index,
+    getViewUsername,
+    createUsername, 
+    exams, 
+    alejandro, 
+    create, 
+    profile, 
+    exam, 
+    feed, 
+    newExam, 
+    deleteExam, 
+    completeExam
+}

@@ -1,0 +1,24 @@
+<%- include("partials/head") %>
+            <section>
+                <article>
+                    <% if (exams.length === 0) { %>
+                        <p>Feed de ExamSocial... próximamente</p>
+                    <% } else if (exams.length >= 1) { %>
+                        <h2>Feed General</h2>
+                        <% for(var i=0; i < exams.length; i++) { %>
+                            <a href="/exams/<%= exams[i].id %>">
+                                <div>Título <%= exams[i].title %> </div>
+                                <div>Autor <%= exams[i].author %></div>
+                                <div>Preguntas <%= exams[i].questions.length %></div>
+                            </a>
+                            <br>
+                        <% } %>
+                        <% if (exams.usersDone) { %> 
+                            <h2>Más contestadas</h2>
+                            <% exams.usersDone.forEach(e => { %>
+                            <div><% exams.usersDone[e].author.email %></div>
+                        <% })} %>
+                    <% } %>
+                </article>
+            </section>
+<%- include("partials/footer") %>

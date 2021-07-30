@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+body {
+  color: black;
+  font-family: 'Poppins', sans-serif;
+}
+  main{
+    background-color:#39C1D7
+  }
+
+body header nav {
+  background: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+body header nav section.h1 {
+  background-color: transparent;
+  height: 70px;
+  padding: 0;
+}
+
+body header nav section.h1 img {
+  height: 100%;
+}
+
+body header nav section details {
+  color: black;
+  font-size: 20px;
+  margin: 0 50px 0 0;
+}
+
+body header nav section details:focus {
+  outline: none;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+body header nav section details summary {
+  padding: 10px 5px;
+  display: inline;
+}
+
+body header nav section details summary:focus {
+  outline: none;
+}
+
+body header nav section details summary:hover {
+  cursor: pointer;
+}
+
+body header nav section details summary::marker {
+  color: black;
+}
+
+body header nav section details a, body header nav section details a:visited {
+  margin: 5px;
+  padding: 0 10px;
+  text-decoration: none;
+  color: black;
+  border: 1px dashed black;
+  border-radius: 10px;
+}
+
+body main > section {
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  color: black;
+}
+
+body main > section > article {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(245, 245, 220, 0.592);
+}
+
+body main > section > article > section h1 {
+  margin: 0;
+}
+
+body main > section > article > section > article {
+  text-align: center;
+}
+
+body main > section > article > section > article a, body main > section > article > section > article a:visited {
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  color: black;
+}
+
+body main > section > article:nth-child(2) {
+  margin: 30px;
+}
+
+body main > section > article:nth-child(2) img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=style.css.map */

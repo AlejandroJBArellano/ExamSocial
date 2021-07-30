@@ -1,0 +1,27 @@
+<%- include("partials/head") %>
+            <section>
+                <article>
+                    <h2>"<%= title %>"</h2>
+                    <h2>Creado por <%= author %></h2>
+                    <h2>Creado el <%= exam.createdAt.getDate() %>/<%= exam.createdAt.getMonth()+1 %>/<%= exam.createdAt.getFullYear() %></h2>
+                    <p>Cantidad de preguntas <%= questions.length %></p>
+                    <% if (usersDone.length >= 1) { %>
+                    <p>Usuarios que lo han realizado: <%= usersDone.length %></p>
+                    <% } %>
+                </article>
+                <article>
+                    <button>Empezar examen Bv</button>
+                </article>
+            </section>
+            <% for(var i = 0; i < questions.length; i++) { %>
+            <section class="question" id="question<%= i %>">
+                <h2><%= questions[i].question %></h2>
+                <% for (var n = 0; n < questions[i].answers.length; n++) { %>
+                <article>
+                    <p><%= questions[i].answers[n].answer %></p>
+                </article>
+                <% } %>
+            </section>
+            <% } %>
+
+<%- include("partials/footer") %>

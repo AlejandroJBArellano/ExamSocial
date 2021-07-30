@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/multimedia/examsocial.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+        <title><%= title %></title>
+        <!-- <link rel="stylesheet" href="exam.css"> -->
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <section class="h1">
+                    <a href="/"><img src="/multimedia/logo-final.png" alt="ExamSocial" title="ExamSocial"></a>
+                </section>
+                <section>
+                    <details open>
+                        <summary>Menú</summary>
+                        <% if (user) {%>
+                            <a href="/feed">Exámenes</a>
+                            <a href="/create">Crear</a>
+                            <a href="/profile/<%= id %>">Perfil</a>
+                            <a href="/exam">Examen de prueba</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        <% } else { %>
+                            <a href="/signin">Iniciar sesión</a>
+                            <a href="/signup">Registrate</a>
+                        <% } %>
+                    </details>
+                </nav>
+            </nav>
+        </header>
+        <main>
+
+
