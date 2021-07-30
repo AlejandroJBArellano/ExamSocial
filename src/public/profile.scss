@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://necolas.github.io/normalize.css/latest/normalize.css");
+$color: rgb(0, 216, 245);
+$colorTransparente: rgba(0, 216, 245, 0.103);
+body{
+    main{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        // BUSCAR LAS CONDICIONALES DE SASS PARA ESPECIFICAR SI TIENE UN ASIDE O NO
+        aside.aside, section.own, section, article{
+            border-radius: 10px;
+            border: 2px solid $color;
+            padding: 10px;
+            margin: 10px;
+            background-color: $colorTransparente;
+        }
+        aside.aside{
+            grid-column: span 1;
+            ul{
+                list-style: none;
+                li{
+                    display: inline;
+                    a{
+                        text-decoration: none;
+                        color: $color;
+                    }
+                }
+            }
+        }
+        section.own{
+            grid-column: span 3;
+        }
+        section{
+            grid-column: span 4;
+            h2{
+                font-size: 35px;
+            } 
+            article{
+                a{
+                    text-decoration: none;
+                    color: $color;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}

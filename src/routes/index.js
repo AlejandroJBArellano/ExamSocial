@@ -17,7 +17,7 @@ router.get('/google/callback', passport.authenticate('google', {
     passReqToCallback: true 
 }),
     (req, res) => {
-        return res.redirect('/feed');
+        res.redirect('/feed');
     }
 );
 

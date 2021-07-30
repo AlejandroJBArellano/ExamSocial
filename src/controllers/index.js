@@ -50,7 +50,7 @@ feed = async (req,res) => {
     const user = await User.findById(req.user);
     const exams = await Exam.find()
     const users = await User.find(exams.author)
-    res.render("feed", {
+    return res.render("feed", {
         title: "Lo último en ExamSocial",
         exams: exams,
         authors: users,
@@ -91,12 +91,14 @@ create = async (req, res)=>{
 profile = async (req, res) =>{
     hasItUsernameTwo(req,res)
     const user = await User.findById(req.user), userToFind = await User.findById(req.params.id);
+    // const arrayExams = await Exam.findMany(userTofind.exams) BUSCAR LOS PARÁMETROS DE FINDMANY PARA SABER COMO SACAR EL TÍTULO DE LOS EXÁMENES Y MOSTRÁRSELOS AL USUARIO
     res.render("profile", {
         title: "Tu perfil de ExamSocial",
+        host: "http://localhost:5000",
         userToFind: userToFind,
         user: user,
-        email: user.email,
-        createdAt: user.createdAt,
+        email: userToFind.email,
+        createdAt: userToFind.createdAt,
         id: user._id
     })
 },

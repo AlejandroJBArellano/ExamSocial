@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://necolas.github.io/normalize.css/latest/normalize.css");
+body main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
+body main aside.aside, body main section.own, body main section, body main article {
+  border-radius: 10px;
+  border: 2px solid #00d8f5;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(0, 216, 245, 0.103);
+}
+
+body main aside.aside {
+  grid-column: span 1;
+}
+
+body main aside.aside ul {
+  list-style: none;
+}
+
+body main aside.aside ul li {
+  display: inline;
+}
+
+body main aside.aside ul li a {
+  text-decoration: none;
+  color: #00d8f5;
+}
+
+body main section.own {
+  grid-column: span 3;
+}
+
+body main section {
+  grid-column: span 4;
+}
+
+body main section h2 {
+  font-size: 35px;
+}
+
+body main section article a {
+  text-decoration: none;
+  color: #00d8f5;
+  font-size: 20px;
+}
+/*# sourceMappingURL=profile.css.map */

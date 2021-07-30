@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="locale:es">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,19 +17,17 @@
                     <a href="/"><img src="/multimedia/logo-final.png" alt="ExamSocial" title="ExamSocial"></a>
                 </section>
                 <section>
-                    <details open>
-                        <summary>Menú</summary>
-                        <% if (user) {%>
-                            <a href="/feed">Exámenes</a>
-                            <a href="/create">Crear</a>
-                            <a href="/profile/<%= id %>">Perfil</a>
-                            <a href="/exam">Examen de prueba</a>
-                            <a href="/logout">Cerrar Sesión</a>
-                        <% } else { %>
-                            <a href="/signin">Iniciar sesión</a>
-                            <a href="/signup">Registrate</a>
-                        <% } %>
-                    </details>
+                    <ul>
+                    <% if (user) {%>
+                        <li><a href="/feed">Inicio</a></li>
+                        <li><a href="/create">Crear</a></li>
+                        <li><a href="/profile/<%= id %>">Perfil</a></li>
+                        <li><a href="/logout">Cerrar Sesión</a></li>
+                    <% } else { %>
+                        <li><a href="/signin">Iniciar sesión</a></li>
+                        <li><a href="/signup">Registrate</a></li>
+                    <% } %>
+                    </ul>
                 </nav>
             </nav>
         </header>
