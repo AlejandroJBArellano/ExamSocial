@@ -12,9 +12,8 @@ body header nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  position: fixed;
+  top: 0px;
   width: 100%;
 }
 
@@ -28,17 +27,30 @@ body header nav section.h1 img {
   height: 100%;
 }
 
-body header nav section ul {
-  list-style: none;
+body header nav section {
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
 }
 
-body header nav section ul li {
+body header nav section summary {
+  padding: 10px 5px;
   display: inline;
 }
 
-body header nav section ul li a, body header nav section ul li a:visited {
+body header nav section summary:focus {
+  outline: none;
+}
+
+body header nav section summary:hover {
+  cursor: pointer;
+}
+
+body header nav section summary::marker {
+  color: black;
+}
+
+body header nav section a, body header nav section a:visited {
   margin: 5px;
-  font-size: 20px;
   padding: 0 10px;
   text-decoration: none;
   color: black;
@@ -46,7 +58,7 @@ body header nav section ul li a, body header nav section ul li a:visited {
   border-radius: 10px;
 }
 
-body main > section {
+body header nav > section {
   height: 100vh;
   display: -ms-grid;
   display: grid;
@@ -54,21 +66,21 @@ body main > section {
   color: black;
 }
 
-body main > section > article {
+body header nav > section > article {
   border-radius: 10px;
   padding: 10px;
   background-color: rgba(245, 245, 220, 0.592);
 }
 
-body main > section > article > section h1 {
+body header nav > section > article > section h1 {
   margin: 0;
 }
 
-body main > section > article > section > article {
+body header nav > section > article > section > article {
   text-align: center;
 }
 
-body main > section > article > section > article a, body main > section > article > section > article a:visited {
+body header nav > section > article > section > article a, body header nav > section > article > section > article a:visited {
   text-decoration: none;
   border: 2px solid black;
   border-radius: 10px;
@@ -76,11 +88,11 @@ body main > section > article > section > article a, body main > section > artic
   color: black;
 }
 
-body main > section > article:nth-child(2) {
+body header nav > section > article:nth-child(2) {
   margin: 30px;
 }
 
-body main > section > article:nth-child(2) img {
+body header nav > section > article:nth-child(2) img {
   width: 100%;
   height: 100%;
   border-radius: 5px;

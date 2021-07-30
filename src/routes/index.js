@@ -8,6 +8,7 @@ indexController = require("../controllers/index"),
 //     } res.redirect("/signin");
 // };
 isAuthenticated = require("../controllers/isAuthenticated");
+<<<<<<< HEAD
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/google/callback', passport.authenticate('google', {
@@ -23,6 +24,10 @@ router.get('/google/callback', passport.authenticate('google', {
 
 router.get("/signin", (req,res,next)=>{
     if(req.user) {res.redirect("/feed")}
+=======
+router.get("/signin", (req,res,next)=>{
+    if(req.user) {return res.redirect("/feed")}
+>>>>>>> g9d5s
     res.render("sign/signin", {title: "Iniciar sesión"})
 })
 router.post("/signin", passport.authenticate("local-signin", {
@@ -32,7 +37,11 @@ router.post("/signin", passport.authenticate("local-signin", {
     passReqToCallback: true //recibir internamente los datos del request
 }))
 router.get("/signup", (req,res,next)=>{
+<<<<<<< HEAD
     if(req.user) {res.redirect("/feed")}
+=======
+    if(req.user) {return res.redirect("/feed")}
+>>>>>>> g9d5s
     res.render("sign/signup", {title: "regístrate"})
 })
 router.post("/signup", passport.authenticate("local-signup", {

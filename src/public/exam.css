@@ -8,15 +8,15 @@
 }
 
 body{
-    background: #007bff;
+    background: #39C1D7;
 }
 
 ::selection{
     color: #fff;
-    background: #007bff;
+    background: #39C1D7;
 }
 
-.start_btn,
+.start_npm,
 .info_box,
 .quiz_box,
 .result_box{
@@ -178,7 +178,8 @@ body{
 
 section{
     padding: 25px 30px 20px 30px;
-    background: #fff;
+    background-color: #39C1D7;
+
 }
 
 section .que_text{
