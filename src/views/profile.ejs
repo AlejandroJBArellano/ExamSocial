@@ -45,7 +45,7 @@
                 <img src="<%= user.picture %>" title="Foto de perfil de <%= userToFind.username %>">
                 <h3>Te uniste el <%= createdAt.getDate() %>/<%= createdAt.getMonth()+1 %>/<%= createdAt.getFullYear() %></h3>
             </section>
-                <% if (userToFind.exams.length >= 1) { %>
+                <% if (userToFind.exams) { %>
                     <section id="made" class="own">
                         <h2>Exámenes creados por ti, para la comunidad</h2>
                         <% userToFind.exams.forEach(e => { %>
@@ -56,7 +56,7 @@
                         <% }) %>
                     </section>
                 <% } %>
-                <% if (userToFind.examsDone.length >= 1) { %>
+                <% if (userToFind.examsDone) { %>
                     <section id="done" class="own">
                         <h2>Exámenes que has realizado</h2>
                         <% userToFind.examsDone.forEach(e => { %>

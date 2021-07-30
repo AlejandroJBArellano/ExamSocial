@@ -27,16 +27,32 @@ body header nav section.h1 img {
   height: 100%;
 }
 
+<<<<<<< HEAD
 body header nav section {
+=======
+body header nav section details {
+  color: black;
+  font-size: 20px;
+  margin: 0 50px 0 0;
+}
+
+body header nav section details:focus {
+  outline: none;
+>>>>>>> parent of 0374150 (merge moment)
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
 }
 
+<<<<<<< HEAD
 body header nav section summary {
+=======
+body header nav section details summary {
+>>>>>>> parent of 0374150 (merge moment)
   padding: 10px 5px;
   display: inline;
 }
 
+<<<<<<< HEAD
 body header nav section summary:focus {
   outline: none;
 }
@@ -50,6 +66,21 @@ body header nav section summary::marker {
 }
 
 body header nav section a, body header nav section a:visited {
+=======
+body header nav section details summary:focus {
+  outline: none;
+}
+
+body header nav section details summary:hover {
+  cursor: pointer;
+}
+
+body header nav section details summary::marker {
+  color: black;
+}
+
+body header nav section details a, body header nav section details a:visited {
+>>>>>>> parent of 0374150 (merge moment)
   margin: 5px;
   padding: 0 10px;
   text-decoration: none;

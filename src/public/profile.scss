@@ -5,8 +5,7 @@ $colorTransparente: rgba(0, 216, 245, 0.103);
 body{
     main{
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-auto-rows: minmax(200px, auto);
+        grid-template-columns: repeat(4, 1fr);
         // BUSCAR LAS CONDICIONALES DE SASS PARA ESPECIFICAR SI TIENE UN ASIDE O NO
         aside.aside, section.own, section, article{
             border-radius: 10px;
@@ -17,16 +16,10 @@ body{
         }
         aside.aside{
             grid-column: span 1;
-            position: sticky;
             ul{
-                margin: 0;
-                padding: 0;
-                height: 100%;
-                display: grid;
-                place-items: center;
                 list-style: none;
-                text-align: center;
                 li{
+                    display: inline;
                     a{
                         text-decoration: none;
                         color: $color;
@@ -35,10 +28,10 @@ body{
             }
         }
         section.own{
-            grid-column: span 4;
+            grid-column: span 3;
         }
         section{
-            height: auto;
+            grid-column: span 4;
             h2{
                 font-size: 35px;
             } 
