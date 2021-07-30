@@ -7,8 +7,9 @@ body{
             background: transparent;
             display: flex;
             justify-content: space-between;
-            position: fixed;
-            top: 0px;
+            align-items: center;
+            // position: fixed;
+            // top: 0px;
             width: 100%;
             section.h1{
                 background-color: transparent;
@@ -20,34 +21,41 @@ body{
                 }
             }
             section{
-                details{
-                    color: black;
-                    font-size: 20px;
-                    margin: 0 50px 0 0;
-                    &:focus{
-                        outline: none;
-                        transition: all .5s ease;
-                    }
-                    summary{
-                        padding: 10px 5px ;
+                // details{
+                //     color: black;
+                //     font-size: 20px;
+                //     margin: 0 50px 0 0;
+                //     &:focus{
+                //         outline: none;
+                //         transition: all .5s ease;
+                //     }
+                //     summary{
+                //         padding: 10px 5px ;
+                //         display: inline;
+                //         &:focus{
+                //             outline: none;
+                //         }
+                //         &:hover{
+                //             cursor: pointer;
+                //         }
+                //         &::marker {
+                //             color: black;
+                //         }
+                //     }
+                ul{
+                    list-style: none;
+                    // margin: 20px;
+                    li{
                         display: inline;
-                        &:focus{
-                            outline: none;
+                        a, a:visited{
+                            margin: 5px;
+                            font-size: 20px;
+                            padding: 0 10px;
+                            text-decoration: none;
+                            color: rgb(0, 0, 0);
+                            border: 1px dashed rgb(0, 0, 0);
+                            border-radius: 10px;
                         }
-                        &:hover{
-                            cursor: pointer;
-                        }
-                        &::marker {
-                            color: black;
-                        }
-                    }
-                    a, a:visited{
-                        margin: 5px;
-                        padding: 0 10px;
-                        text-decoration: none;
-                        color: rgb(0, 0, 0);
-                        border: 1px dashed rgb(0, 0, 0);
-                        border-radius: 10px;
                     }
                 }
             }

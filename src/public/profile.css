@@ -3,8 +3,9 @@
 body main {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(200px, auto);
 }
 
 body main aside.aside, body main section.own, body main section, body main article {
@@ -17,14 +18,19 @@ body main aside.aside, body main section.own, body main section, body main artic
 
 body main aside.aside {
   grid-column: span 1;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 body main aside.aside ul {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
   list-style: none;
-}
-
-body main aside.aside ul li {
-  display: inline;
+  text-align: center;
 }
 
 body main aside.aside ul li a {
@@ -33,11 +39,11 @@ body main aside.aside ul li a {
 }
 
 body main section.own {
-  grid-column: span 3;
+  grid-column: span 4;
 }
 
 body main section {
-  grid-column: span 4;
+  height: auto;
 }
 
 body main section h2 {

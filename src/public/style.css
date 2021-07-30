@@ -12,8 +12,9 @@ body header nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  position: fixed;
-  top: 0px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
 }
 
@@ -27,37 +28,17 @@ body header nav section.h1 img {
   height: 100%;
 }
 
-body header nav section details {
-  color: black;
-  font-size: 20px;
-  margin: 0 50px 0 0;
+body header nav section ul {
+  list-style: none;
 }
 
-body header nav section details:focus {
-  outline: none;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
-}
-
-body header nav section details summary {
-  padding: 10px 5px;
+body header nav section ul li {
   display: inline;
 }
 
-body header nav section details summary:focus {
-  outline: none;
-}
-
-body header nav section details summary:hover {
-  cursor: pointer;
-}
-
-body header nav section details summary::marker {
-  color: black;
-}
-
-body header nav section details a, body header nav section details a:visited {
+body header nav section ul li a, body header nav section ul li a:visited {
   margin: 5px;
+  font-size: 20px;
   padding: 0 10px;
   text-decoration: none;
   color: black;
