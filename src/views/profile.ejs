@@ -1,79 +1,21 @@
-<!DOCTYPE html>
-<html lang="locale:es">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="/multimedia/examsocial.ico" type="image/x-icon">
-        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-        <title><%= title %></title>
-        <link rel="stylesheet" href="/style.css">
-        <link rel="stylesheet" href="/profile.css">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <section class="h1">
-                    <a href="/"><img src="/multimedia/logo-final.png" alt="ExamSocial" title="ExamSocial"></a>
-                </section>
-                <section>
-                    <ul>
-                    <% if (user) {%>
-                        <li><a href="/feed">Inicio</a></li>
-                        <li><a href="/create">Crear</a></li>
-                        <li><a href="/profile/<%= id %>">Perfil</a></li>
-                        <li><a href="/logout">Cerrar Sesión</a></li>
-                    <% } else { %>
-                        <li><a href="/signin">Iniciar sesión</a></li>
-                        <li><a href="/signup">Registrate</a></li>
-                    <% } %>
-                    </ul>
-                </nav>
-            </nav>
-        </header>
-        <main>
-            <% if(user._id.toString() === userToFind._id.toString()) { %>
-            <aside class="aside">
-                <ul>
-                    <li><a href="#here">Inicio</a></li>
-                    <li><a href="#made">Exámenes creados</a></li>
-                    <li><a href="#done">Exámenes hechos</a></li>
-                </ul>
-            </aside>
-            <section id="here" class="own">
-                <h2>¡Bienvenido de nuevo, <%= userToFind.username %>!</h2>
-                <img src="<%= user.picture %>" title="Foto de perfil de <%= userToFind.username %>">
+<%- include("partials/head") %>
+            <% if(user._id.toString() === userToFind._id.toString()) {%>
+            <section>
+                <h2>¡Bienvenido de nuevo, <%= user.username %>!</h2>
+                <img src="/multimedia/picture/<%= user.picture %>.png" alt="">
                 <h3>Te uniste el <%= createdAt.getDate() %>/<%= createdAt.getMonth()+1 %>/<%= createdAt.getFullYear() %></h3>
             </section>
-                <% if (userToFind.exams) { %>
-                    <section id="made" class="own">
-                        <h2>Exámenes creados por ti, para la comunidad</h2>
-                        <% userToFind.exams.forEach(e => { %>
-                        <article>
-                            <p>Cantidad de preguntas: <%= e.questions.length %></p>
-                            <a href="<%= host %>/exams/<%= e._id %>">Ir al examen</a>
-                        </article>
-                        <% }) %>
-                    </section>
-                <% } %>
-                <% if (userToFind.examsDone) { %>
-                    <section id="done" class="own">
-                        <h2>Exámenes que has realizado</h2>
-                        <% userToFind.examsDone.forEach(e => { %>
-                        <article>
-                            <a href="<%= host %>/exams/<%= e._id %>">Ir al examen</a>
-                        </article>
-                        <% }) %>
-                    </section>
-                <% } %>
             <% } else { %>
             <section>
                 <h2> <%= userToFind.username %></h2>
-                <% if (userToFind.exams) { %>
-                <article>
-                    <p>Exámenes creados: <%= userToFind.exams.length %></p>
-                </article>
-                <% } %>
             </section>
             <% } %>
+            <section>
+                <p>Exámenes creados</p>
+                <% userToFind.exams.forEach(e => { %>
+                    <article>
+                        <p><%= e.questions.length %></p>
+                    </article>
+                <% }) %>
+            </article>
 <%- include("partials/footer") %>
